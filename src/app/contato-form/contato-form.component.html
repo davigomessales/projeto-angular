@@ -1,5 +1,6 @@
 <h1 class="display-4">Contato 1</h1>
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="contato.id"> 
     <div class="form-group">
         <label for="exampleInputName1">Name</label>
         <input name="nome" #nome="ngModel" [(ngModel)]="contato.nome" type="text" class="form-control" 

@@ -18,11 +18,21 @@ export class HomeComponent implements OnInit {
     this.contato = new Contato();
     this.contatos = this.contatoService.getAll();
   }
+
+  edit(contato:Contato){
+    this.contato = contato;
+  }
+  delete(contato:Contato){
+    let index = this.contatos.map((item) => item.id).indexOf(contato.id)
+    this.contatoService.delete(contato);
+    this.contatos.splice(index, 1);
+  }
    saveContato(form: NgForm){
      this.contato = form.value;
-     this.contato.id = new Date().getTime().toString();
-     this.contatoService.save(this.contato)
-     this.contatos.push(this.contato)
+     this.contato.id = (this.contato.id) ? this.contato.id : new Date().getTime().toString();
+      this.contatoService.save(this.contato)
+    this.contatos = this.contatoService.getAll();
+    //  this.contatos.push(this.contato)
      form.resetForm();
    }
 

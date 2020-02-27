@@ -8,6 +8,9 @@ import { Contato } from './../models/contato.models';
 export class ContatoService {
 
   constructor(private localStorage : LocalStorageService) { }
+  delete(contato:Contato){
+    this.localStorage.remove(contato.id);
+  }
 
   save(contato : Contato){
     this.localStorage.set(contato.id, contato);
